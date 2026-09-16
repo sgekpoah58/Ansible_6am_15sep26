@@ -1,0 +1,29 @@
+---
+- hosts: webservers
+  become: yes
+  gather_facts: yes
+  tasks:
+    - name: I want to Install webserver on debian nodes(apt-get install apache2)
+      apt:
+        name: "{{mywebpackondebian}}"
+        state: present
+        when: ansible_os_family == "Debian"
+
+    - name: I want to Start webserver on debian nodes(service apache2 start)
+      service:
+        name: "{{mywebpackondebian}}"
+        state: started
+        when: ansible_os_family == "Debian"
+
+    - name: I want to install webserver on redhat nodes(yum install httpd)
+      yum:
+        name: "{{mywebpackonredhat}}"
+        state: present
+        when: ansible_os_family == "RedHat"
+
+    - name: I want to Start webserver on redhat nodes(service httpd start)
+      service:
+        name: "{{mywebpackonredhat}}"
+        state: started
+        when: ansible_os_family == "RedHat"
+

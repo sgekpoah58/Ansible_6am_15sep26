@@ -1,0 +1,6 @@
+---
+var1: webserver1  
+mywebpackondebian: apache2
+mywebpackonredhat: httpd
+myjavapackondebian: openjdk-21-jdk
+myjavapackonredhat: java-21-amazon-corretto-develop
